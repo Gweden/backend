@@ -16,8 +16,15 @@ async function bootstrap() {
       whitelist:true
     })
   );
+  const whitelist = AppConfigService.getAppWhitelist();
+  Logger.warn(whitelist);
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
+  app.enableCors({
+    origin:whitelist,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    preflightContinue: false,
+    optionsSuccessStatus: 200
+  });
   const PORT = AppConfigService.getAppPort();
   await app.listen(PORT);
   Logger.log(`Nest is running on port ${process.env.PORT}`);
