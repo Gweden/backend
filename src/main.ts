@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { AppConfigService } from './common/config/config';
+import { AppConfigService } from './common/config/app-config.service';
 
 
 

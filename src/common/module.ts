@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AppConfigService } from './config/app-config.service';
 
 @Module({
   imports: [
@@ -7,7 +8,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     })
   ],
-  controllers: [],
-  providers: [],
+  providers: [AppConfigService],
+  exports:[AppConfigService]
 })
 export class CommonModule {}

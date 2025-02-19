@@ -30,7 +30,9 @@ export class AppConfigService extends ConfigService{
             max_otps_per_hour: this.get<string>("MAX_OTPS_PER_HOUR"),
             resend_window_minutes: this.get<string>("RESEND_WINDOW_MINUTES"),
             max_resend: this.get<string>("MAX_RESENDS"),
+            max_request: this.get<string>("MAX_OTPS_REQUEST_PER_HOUR"),
             max_retention: this.get<string>("MAX_RETENTION_HOURS"),
+            max_otp_resend_time: this.get<string>("OTP_RESEND_TIME"),
         }
     }  
     

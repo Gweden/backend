@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppConfigService } from 'src/common/config/config';
+import { AppConfigService } from 'src/common/config/app-config.service';
 import { RedisService } from './service/redis.service';
 
 

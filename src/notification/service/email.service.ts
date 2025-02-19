@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as nodemailer from "nodemailer";
-import { AppConfigService } from 'src/common/config/config';
+import { AppConfigService } from 'src/common/config/app-config.service';
 import { INotification } from '../interface/notification.interface';
-import { INotificationPayload } from '../interface';
+import { INotificationPayload, EMAIL_SUBJECT } from '../interface';
 
 
 @Injectable()
@@ -10,7 +10,6 @@ export class EmailService implements INotification{
     private readonly logger = new Logger(EmailService.name);
     private readonly transporter: nodemailer.transporter;
     private readonly mailConfig:any;
-    private readonly subject = "OTP Verification";
 
     constructor(
         private readonly config:AppConfigService
@@ -34,7 +33,7 @@ export class EmailService implements INotification{
         await this.transporter.sendMail({
             from:this.mailConfig.from,
             to:payload.recipient,
-            subject:this.subject,
+            subject:EMAIL_SUBJECT,
             text:payload.message,
             html:`<p>${payload.message}<p>`
         });
