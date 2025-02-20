@@ -9,6 +9,9 @@ export class AppConfigService extends ConfigService{
     static getAppPort(){
         return process.env.PORT ?? 8080;
     }
+    static getAppWhitelist(){
+        return process.env.WHITELIST?.split(',') || [];
+    }
 
     getMailConfig(){
         return {
